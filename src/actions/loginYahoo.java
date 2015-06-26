@@ -33,4 +33,11 @@ public class loginYahoo {
 		loginButton.submit();
 	}
 	
+	public loginYahoo(String user, String pass){
+		enterUserName(user);
+		enterPassword(pass);
+		clickLoginButton();
+		
+	}
+	
 }

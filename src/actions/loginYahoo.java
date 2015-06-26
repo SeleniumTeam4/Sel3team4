@@ -5,11 +5,13 @@ import org.openqa.selenium.WebDriver;
 import interfaces.yahooLoginPage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import interfaces.yahooMailHomePage;
 
 
 public class loginYahoo {
 	WebDriver driver;
 	yahooLoginPage objLogin = new yahooLoginPage(); 
+	yahooMailHomePage objHomePage;
 	
 	public loginYahoo(WebDriver driver) {
 		this.driver = driver; 
@@ -28,16 +30,17 @@ public class loginYahoo {
 	}
 	
 	// Click login button
-	public void clickLoginButton(){
+	public yahooMailHomePage clickLoginButton(){
 		WebElement loginButton = driver.findElement(By.xpath(objLogin.signInButton));
 		loginButton.submit();
+		return objHomePage;
 	}
 	
-	public loginYahoo(String user, String pass){
+	/*public yahooMailHomepage loginYahooCredential(String user, String pass){
 		enterUserName(user);
 		enterPassword(pass);
-		clickLoginButton();
+		return clickLoginButton();*/
 		
-	}
-	
 }
+	
+

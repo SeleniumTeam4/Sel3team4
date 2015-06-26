@@ -1,25 +1,28 @@
 package tests;
 
-import java.util.concurrent.TimeUnit;
-
 import org.testng.Assert;
 import org.testng.asserts.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import interfaces.adminLoginPage;
+import interfaces.createArticlePage;
 import actions.PageFactory;
 import actions.adminLoginAction;
 import actions.commonActions;
 import actions.commonActions.browser;
+import actions.createArticleAction;
 import dataTest.commonVariables;
 import org.testng.annotations.*;
+
 import interfaces.homePage;
 
-public class loginTest {
+
+public class article001 {
 	WebDriver driver;
+	private createArticleAction objCreateArticleAction = new createArticleAction(browser.getDriver());
+	private createArticlePage objCreateArticlePage;
 	private adminLoginAction objadminLogin = new adminLoginAction(browser.getDriver());
 	private actions.homePageAction objhomepage;
-	private commonActions common;
 	
 	@BeforeMethod
 	public void beforeMethod(){
@@ -27,20 +30,14 @@ public class loginTest {
 		browser.open(commonVariables.initialPage);
 		//common.waitForControl(driver, adminLoginPage.userNameTextbox);
 		//objadminLogin = PageFactory.getAdminLogin(driver);
-		
+		objhomepage = objadminLogin.login(commonVariables.userNameValid, commonVariables.passwordValid);
 		
 	}
+	
 	
 	@Test
-	public void loginValidCredential(){
-		objhomepage = objadminLogin.login(commonVariables.userNameValid, commonVariables.passwordValid);
-		objadminLogin = objhomepage.LogOut();
-			
+	public void createNewArticleTest(){
+		objCreateArticleAction.openNewArticlePage();
+		
 	}
-	
-	/*@AfterMethod
-	public void afterMethod(){
-		driver.close();
-		driver.quit();
-	}*/
 }
